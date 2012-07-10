@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/perl
 
 use warnings;
 
@@ -30,21 +30,12 @@ my $force = 0;
 my $compile = 0;
 my $mtime = 0;
 my $prefix = "/";
-my $dir_var = "/var/pkg/";
-my $dir_etc = "/etc/";
 my $db;
 my $config;
 my $http = HTTP::Tiny->new;
 my $dlprefix = "";
 my $dep_depth = 15;
-my $arch;
 # SUBROUTINES
-sub rmdir_empty {
-	my ($dir) = @_;
-	unless (scalar <$dir/*>) {
-		rmdir($dir);
-	}
-}
 sub download_file {
 	my ($url, $out) = @_;
 	my $f = open(FILE, ">", $out)
@@ -63,10 +54,8 @@ sub die_error {
 	exit($code);
 }
 sub hardlink_copy {
-	my ($src, $dest, $pkgname,$tmpdir) = @_;
-	my @old_files;
-	my @old_dirs = ();
-        if($command eq "reinstall") { @old_files = read_filelist($tmpdir."/filelist"); }
+	my ($src, $dest, $pkgname) = @_;
+	# Screw the Perl ways! Bash on it!
 	open(FILELIST, ">","filelist")
 		or die_error("Cannot create filelist!",8);
 	chdir $src;
@@ -74,7 +63,7 @@ sub hardlink_copy {
 	foreach $file (@files) {
 		print FILELIST $file;
 		$file=~s/\n//g;
-		if($command eq "reinstall" && !db_can_own($pkgname,$file)) { next; }
+		if($command eq "reinstall" && !db_owns($pkgname,$file)) { next; }
 		if($verbose>=2) { print $dest.$file . "\n"; }
 		if(-f $dest.$file) { unlink $dest.$file; if($command ne "reinstall"){ print "Overwriting " . $file . "!\n"; } }
 		if(-l $src.$file) {
@@ -88,26 +77,6 @@ sub hardlink_copy {
 		}
 	}
 	close(FILELIST);
-        if($command eq "reinstall") {
-                for(my $i=0; $i<=$#old_files; $i++) {
-                        my $fex = 0;
-                        foreach $file (@files) {
-				if($file eq $old_files[$i]) { $fex = 1; last; }
-                        }
-			if($fex>0) {
-				splice(@old_files,$i,1);
-				$i--;
-			}
-                }
-        }
-	foreach $f (@old_files) {
-		print "Old file: " . $dest.$f . "\n";
-		if(-f $dest.$f) { unlink($dest.$f); }
-		elsif(-d $dest.$f) { push(@old_dirs,$dest.$f); }
-	}
-        foreach $dir (@old_dirs) {
-		rmdir_empty($dir);
-        }
 	return @files;
 }
 sub read_filelist {
@@ -175,9 +144,8 @@ sub check_deps_die {
 	if($n_dlen>0) { die_error("Resolve dependencies first: ".join(', ',@n_deps),15); }
 }
 # DATABASE
-sub db_can_own {
+sub db_owns {
 	my ($name, $filename) = @_;
-	if(!exists($db->{files}->{$filename})) { return 1; }
 	my @arr = @{$db->{files}->{$filename}};
 	my $al = @arr;
 	if($verbose>=2) { print "Checking if ".$arr[$al-1]." equals ".$name." for filename ".$filename."... ".($arr[$al-1] eq $name)."\n"; }
@@ -238,7 +206,7 @@ sub db_removepkg {
 			else {
 				my $last_app=@{$arr}[$arrlen-1];
 				if($last_app ne $name) {
-					$src = $prefix.$dir_var."/files/".$last_app."/root/";
+					$src = $prefix."var/pkg/files/".$last_app."/root/";
 					if(-f $src.$file) {
 						if(-f $prefix.$file) { unlink($prefix.$file); }
 						$errcode = system("ln ".$src.$file." ".$prefix.$file);
@@ -251,7 +219,7 @@ sub db_removepkg {
 	delete $db->{packages}->{$name};
 }
 sub db_update {
-	writeJSONC($prefix.$dir_var."/db.json",$db);
+	writeJSONC($prefix."var/pkg/db.json",$db);
 }
 sub unpack_pkg {
 	my ($src, $dest) = @_;
@@ -285,11 +253,11 @@ sub cmd_list {
 	print $i . " packages total.\n";
 }
 sub cmd_uninstall {
-	my $pkgdir = $prefix.$dir_var."/files/".$package;
+	my $pkgdir = $prefix."var/pkg/files/".$package;
 	if(!is_installed($package)){ die_error("The package is not installed! Install it first.",11); }
 	# Abuse the fact that the filelist is generated during the hardlinking.
 	print "Removing package " . $package . "...\n";
-	if(defined($package_info->{package}->{preuninstall})) { chdir $pkgdir; exec_script("./" . $package_info->{package}->{preuninstall}); }
+	if(defined($package_info->{package}->{preuninstall})) { chdir $pkgdir; exec_script("./" . $package_info->{package}->{preuninstall}." ".$prefix); }
 	if($verbose>=2) { print "Reading filelist...\n"; }
 	open(FILELIST, "<", $pkgdir."/filelist")
 		or die_error("Cannot open filelist!",5);
@@ -312,11 +280,13 @@ sub cmd_uninstall {
 	}
 	# We have to check for empty dirs. You know.
 	foreach $dir (@dirs) {
-		if($verbose>=2) { print "Checking " . $dir . "\n"; }
-		rmdir_empty($dir);
+		unless (scalar <$dir/*>) {
+			if($verbose>=2) { print "Removing " . $dir . "\n"; }
+			rmdir($dir);
+		}
 	}
 	if($verbose>=1) { print "Removing package...\n"; }
-	if(defined($package_info->{package}->{postuninstall})) { chdir $pkgdir; exec_script("./" . $package_info->{package}->{postuninstall}); }
+	if(defined($package_info->{package}->{postuninstall})) { chdir $pkgdir; exec_script("./" . $package_info->{package}->{postuninstall}." ".$prefix); }
 	db_removepkg($package,read_filelist($pkgdir."/filelist"));
 	db_update();
 	chdir "/";
@@ -334,10 +304,8 @@ sub cmd_install {
 	unless(-f $package) { $package=$package.$package_ext;
 		unless(-f $package) { die_error("File doesn't exist",3); }
 	}
-	my $tempdir2;
 	if($verbose>=2) { print "Creating tempdir...\n"; }
-	$tempdir = tempdir("/tmp/pkgist-XXXXXXXXXXXXXXXX", CLEANUP => ($verbose>1?0:1));
-	if($command eq "reinstall") { $tempdir2 = tempdir("/tmp/pkgreinst-XXXXXXXXXXXXXXXX", CLEANUP => ($verbose>1?0:1)); }
+	$tempdir = tempdir("/tmp/pkgist-XXXXXXXX", CLEANUP => ($verbose>1?0:1));
 	if($verbose>=1) { print "Unpacking package...\n"; }
 	unpack_pkg($package,$tempdir);
 	chdir $tempdir;
@@ -346,7 +314,7 @@ sub cmd_install {
 	my $pkgname = $package_info->{meta}->{name};
 	if(is_installed($pkgname) && $command ne "reinstall"){ die_error("The package is already installed! Uninstall it first.",11); }
 	check_deps_die($package_info->{meta}->{dependencies});
-	my $pkgdir = $prefix.$dir_var."/files/".$pkgname;
+	my $pkgdir = $prefix."var/pkg/files/".$pkgname;
 	my $rootdir = $pkgdir."/root";
 	if(!(-d "root") or ($compile==1 and ($package_info->{package}->{script} ne "")))
 	{
@@ -356,18 +324,18 @@ sub cmd_install {
 		system(($config->{flags} . " ./" . $package_info->{package}->{script} . " " . $tempdir . "/root/")) == 0
 			or die_error("Compilation failed: $?",6);
 	}
-	if(defined($package_info->{package}->{preinstall})) { exec_script("./" . $package_info->{package}->{preinstall}); }
+	if(defined($package_info->{package}->{preinstall})) { exec_script("./" . $package_info->{package}->{preinstall}." ".$prefix); }
 	if($verbose>=1) { print "Moving package...\n"; }
 	# Should be more portable, really. But who'll want to install this on Windows?
 	# Is that even possible?
-	if($command eq "reinstall") { system("cp ".$pkgdir."/filelist ".$tempdir2); system("rm -rf ".$pkgdir); }
+	if($command eq "reinstall") { system("rm -rf ".$pkgdir); }
 	unless(-d ($pkgdir)){mkdir ($pkgdir);}
 	system("mv ".$tempdir."/* ".$pkgdir);
 	unless(-d $rootdir){ die_error("Moving failed: $?",7); }
 	print "Installing files...\n";
 	chdir $pkgdir;
-	my @filelist = hardlink_copy($rootdir."/", $prefix, $pkgname, $tempdir2);
-	if(defined($package_info->{package}->{postinstall})) { chdir $pkgdir; exec_script("./" . $package_info->{package}->{postinstall}); }
+	my @filelist = hardlink_copy($rootdir."/", $prefix, $pkgname);
+	if(defined($package_info->{package}->{postinstall})) { chdir $pkgdir; exec_script("./" . $package_info->{package}->{postinstall}." ".$prefix); }
 	db_addpkg($package_info,@filelist);
 	db_update();
 	print "Package " . $pkgname . " installed!\n";
@@ -448,36 +416,35 @@ for(;$args<$argv_len;$args++)
 # Make directories that may be needed.
 unless(-d ($prefix . "var")){mkdir ($prefix."var");}
 unless(-d ($prefix . "etc")){mkdir ($prefix."etc");}
-unless(-d ($prefix . $dir_etc)){mkdir ($prefix.$dir_etc);}
-unless(-d ($prefix . $dir_var)){mkdir ($prefix.$dir_var);}
-unless(-d ($prefix . $dir_var."/files")){mkdir ($prefix.$dir_var."/files");}
+unless(-d ($prefix . "var/pkg")){mkdir ($prefix."var/pkg");}
+unless(-d ($prefix . "var/pkg/files")){mkdir ($prefix."var/pkg/files");}
 # Create empty DB if needed.
-unless(-f ($prefix . $dir_var."/db.json")){
+unless(-f ($prefix . "var/pkg/db.json")){
 	$db = {};
 	$db->{packages} = {};
 	$db->{providers} = {};
 	$db->{files} = {};
-	writeJSONC($prefix.$dir_var."/db.json",$db);
+	writeJSONC($prefix."var/pkg/db.json",$db);
 }
-unless(-f ($prefix . $dir_etc . "/pppkg.json")){
+unless(-f ($prefix . "etc/pppkg.json")){
 	$config = {};
 	$config->{flags} = "";
-	writeJSON($prefix.$dir_etc."/pppkg.json",$config);
+	writeJSON($prefix."etc/pppkg.json",$config);
 }
 # Commands.
 if($command ne "nope")
 {
 	print "Loading config/database...";
-	$config = readJSON($prefix . $dir_etc ."/pppkg.json");
-	$db = readJSONC($prefix . $dir_var."/db.json");
+	$config = readJSON($prefix . "etc/pppkg.json");
+	$db = readJSONC($prefix . "var/pkg/db.json");
 	print " complete\n";	
 }
 
 if($command eq "download" || $command eq "di" || $command eq "dri")
 {
-        unless(-f ($prefix . $dir_var."/repo.json")) { die_error("Repo not found!",12); }
+        unless(-f ($prefix . "var/pkg/repo.json")) { die_error("Repo not found!",12); }
         print "Loading repository...";
-        $repo = readJSONC($prefix . $dir_var."/repo.json");
+        $repo = readJSONC($prefix . "var/pkg/repo.json");
         print " complete\n";
 }
 sub process_cmd {
@@ -492,29 +459,34 @@ sub process_cmd {
 		}
 		if(exists($repo->{packages}->{$package}))
 		{
-			my $deps = $repo->{packages}->{$package}->{meta}->{dependencies};
 			my $fn = $repo->{packages}->{$package}->{filename};
-			if($dep_depth<1) { check_deps_die($deps); }
-			my @deps = check_dependencies($deps);
-			my $dlen = @deps;
-			if($dlen>0)
+			if($command ne "download")
 			{
-				$dep_depth--;
-				my $oldpkg = $package;
-				foreach $dep (@deps) {
-					my $oldcmd = $command;
-					$package = $dep;
-					process_cmd();
-					$command = $oldcmd;
+				my $deps = $repo->{packages}->{$package}->{meta}->{dependencies};
+				if($dep_depth<1) { check_deps_die($deps); }
+				my @deps = check_dependencies($deps);
+				my $dlen = @deps;
+				if($dlen>0)
+				{
+					$dep_depth--;
+					my $oldpkg = $package;
+					foreach $dep (@deps) {
+						my $oldcmd = $command;
+						$package = $dep;
+						process_cmd();
+						$command = $oldcmd;
+					}
+					$package = $oldpkg;
 				}
-				$package = $oldpkg;
+				if($command ne "dri" && is_installed($package)){ die_error("The package is already installed! Uninstall it first.",11); }
 			}
-			if($command ne "dri" && is_installed($package)){ die_error("The package is already installed! Uninstall it first.",11); }
 			print "Downloading...\n";
 			if($command eq "di") {
 				$dlprefix = tempdir("/tmp/pkgdl-XXXXXX", CLEANUP => ($verbose>1?0:1)) . "/";
 			}
-			chdir $dlprefix;
+			if($command ne "download" || $dlprefix ne "") {
+				chdir $dlprefix;
+			}
 			download_file($config->{repo} . "/" . $repo->{packages}->{$package}->{filename}, $repo->{packages}->{$package}->{filename});
 			print "Downloaded!\n";
 		}
@@ -532,15 +504,15 @@ sub process_cmd {
                 cmd_install();
 	} elsif($command eq "update") {
 		print "Downloading new repo...\n";
-		download_file($config->{repo} . "/repo.json.gz", $prefix . $dir_var."/repo.json.gz");
+		download_file($config->{repo} . "/repo.json.gz", $prefix . "var/pkg/repo.json.gz");
 		print "Unpacking...\n";
-		gunzip $prefix . $dir_var."/repo.json.gz" => $prefix . $dir_var."/repo.json"
+		gunzip $prefix . "var/pkg/repo.json.gz" => $prefix . "var/pkg/repo.json"
 			or die_error("Couldn't unpack repo! $GunzipError",4);
 		print "Done!\n";
 	} elsif($command eq "install" || $command eq "reinstall") { cmd_install(); }
 	elsif($command eq "remove") { cmd_uninstall(); }
 	elsif($command eq "list") { cmd_list(); }
-	else { die_error("No command specified.\nUse -h for help."); }
+	elsif($command ne "download") { die_error("No command specified.\nUse -h for help."); }
 }
 process_cmd();
 exit(0);
