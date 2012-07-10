@@ -1,0 +1,27 @@
+--- Makefile
++++ Makefile
+@@ -37,10 +37,9 @@
+ 
+ HDRS = gpm.h gpmInt.h twiddler.h synaptics.h message.h
+ 
+-PSRC = prog/mev.c prog/hltest.c prog/mouse-test.c prog/disable-paste.c			\
+-		 prog/display-buttons.c  prog/display-coords.c prog/get-versions.c
++PSRC = prog/mev.c prog/hltest.c prog/mouse-test.c prog/get-versions.c
+ 
+-POBJ = $(PSRC:.c=.o) prog/gpm-root.o
++POBJ = $(PSRC:.c=.o) prog/gpm-root.o
+ 
+ PROG = $(POBJ:.o=)
+ 
+--- daemon/open_console.c
++++ daemon/open_console.c
+@@ -20,6 +20,8 @@
+  *
+  ********/
+ 
++#define major(dev) (((unsigned) (dev))>>8)
++
+ #include <fcntl.h>                  /* open and co.      */
+ #include <sys/stat.h>               /* stat()            */
+ #include <stropts.h>                /* ioctl             */
+

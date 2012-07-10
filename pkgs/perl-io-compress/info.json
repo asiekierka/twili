@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-io-compress", "version": "2.049",
+"description": "Perl read/write compressed files library",
+"dependencies": "perl perl-compress-raw-bzip2 perl-compress-raw-zlib",
+"provides": "",
+"url": "http://search.cpan.org/~pmqs/IO-Compress-2.049/"},
+"package": {"script": "build.sh"}}

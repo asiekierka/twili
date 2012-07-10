@@ -1,0 +1,31 @@
+LEFT OUT:
+- MTD support
+- Misc devices
+- ATA/ATAPI support
+- specific SATA/PATA/SCSI drivers
+- button 2+3 emulation (Mac thingy)
+- non-USB DVB/ATSC adapters
+- OSS the deprecated unemulated one
+- certain special HID drivers
+- Ultra Wideband devices
+- Sony MemoryStick card support (I'm definitely sure it's not the one used by normal people)
+- LED Trigger support
+- InfiniBand support
+- EDAC reporting
+- non-CMOS RTC drivers
+- non-generic userspace I/O drivers
+- Staging drivers
+- most Firmware drivers (too local and/or experimental, from Googling)
+- NLS is modularized except cp437, ascii and utf8
+
+FILESYSTEMS:
+- Btrfs is modularized (experimental but used by some)
+- NILFS2 is modularized (never heard of it)
+- NTFS is modularized (if you boot linux from an NTFS partition i think you should stop reading this now)
+- miscellaneous filesystems are off except for:
+	- SquashFS + compressed variants
+	- Apple partitions
+	- cramfs
+	- romfs
+- NFS is the only network filesystem
+- Mac, PC and EFI partition tables supported

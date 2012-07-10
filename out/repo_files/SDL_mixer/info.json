@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "SDL_mixer", "version": "1.2.12",
+"description": "SDL mixer library",
+"dependencies": "libc SDL",
+"provides": "",
+"url": "http://www.libsdl.org/projects/SDL_mixer/"},
+"package": {"script": "build.sh"}}

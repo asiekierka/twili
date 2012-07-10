@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "ncurses", "version": "5,9",
+"description": "new curses library",
+"dependencies": "libc",
+"provides": "curses",
+"url": "http://www.gnu.org/software/ncurses/"},
+"package": {"script": "build.sh"}}

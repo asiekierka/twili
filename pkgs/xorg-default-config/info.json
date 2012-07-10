@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xorg-default-config", "version": "0.1",
+"description": "Default X.org config",
+"dependencies": "",
+"provides": "",
+"url": ""},
+"package": {"script": ""}}

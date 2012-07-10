@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xterm", "version": "269",
+"description": "",
+"dependencies": "libc libx11 libxaw libxft curses pcre",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

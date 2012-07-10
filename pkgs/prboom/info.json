@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "prboom", "version": "2.5.0",
+"description": "DOOM port",
+"dependencies": "libc SDL SDL_mixer SDL_net",
+"provides": "",
+"url": "http://prboom.sourceforge.net"},
+"package": {"script": "build.sh"}}

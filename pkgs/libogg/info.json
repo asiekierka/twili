@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libogg", "version": "1.3.0",
+"description": "Ogg library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.xiph.org/"},
+"package": {"script": "build.sh"}}

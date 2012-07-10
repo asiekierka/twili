@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "automake", "version": "1.12.1",
+"description": "GNU automake",
+"dependencies": "libc autoconf",
+"provides": "",
+"url": "http://www.gnu.org/software/automake/"},
+"package": {"script": "build.sh"}}

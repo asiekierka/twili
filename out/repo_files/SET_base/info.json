@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "SET_base", "version": "0.1",
+"description": "Base installation set",
+"dependencies": "libc busybox perl sed binutils gawk gcc zlib xz perl-compress-raw-bzip2 perl-compress-raw-zlib perl-io-compress perl-json pppkg config-minimal curses make",
+"provides": "",
+"url": "http://twi.asiekierka.pl/"},
+"package": {"script": ""}}

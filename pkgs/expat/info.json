@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "expat", "version": "2.1.0",
+"description": "expat XML parser",
+"dependencies": "libc",
+"provides": "",
+"url": "http://sourceforge.net/projects/expat"},
+"package": {"script": "build.sh"}}

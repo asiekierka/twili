@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libxft", "version": "2.2.0",
+"description": "",
+"dependencies": "libc fontconfig libxrender",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libxrender", "version": "0.9.6",
+"description": "",
+"dependencies": "libc libx11 renderproto",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

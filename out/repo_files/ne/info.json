@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "ne", "version": "2.3",
+"description": "ne, the nice editor",
+"dependencies": "libc curses",
+"provides": "",
+"url": "http://ne.dsl.unimi.it/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "mc", "version": "4.8.2",
+"description": "midnight commander",
+"dependencies": "libc slang",
+"provides": "",
+"url": "http://www.midnight-commander.org/"},
+"package": {"script": "build.sh"}}

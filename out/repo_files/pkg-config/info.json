@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "pkg-config", "version": "0.25",
+"description": "pkg-config, a library helper tool",
+"dependencies": "libc",
+"provides": "",
+"url": "http://freedesktop.org/wiki/Software/pkg-config"},
+"package": {"script": "build.sh"}}

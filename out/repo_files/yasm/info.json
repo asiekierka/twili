@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "yasm", "version": "1.2.0",
+"description": "yasm modular assembler",
+"dependencies": "libc",
+"provides": "",
+"url": "http://yasm.tortall.net/"},
+"package": {"script": "build.sh"}}

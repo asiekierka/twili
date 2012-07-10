@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-xml-parser", "version": "2.41",
+"description": "Perl XML parser",
+"dependencies": "perl expat",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

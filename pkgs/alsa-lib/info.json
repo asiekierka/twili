@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "alsa-lib", "version": "1.0.25",
+"description": "ALSA library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.alsa-project.org"},
+"package": {"script": "build.sh"}}

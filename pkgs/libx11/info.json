@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libx11", "version": "1.4.3",
+"description": "",
+"dependencies": "libc xorg-util-macros libxcb xproto xextproto xtrans kbproto inputproto",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

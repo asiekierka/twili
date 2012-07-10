@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "dialog", "version": "1.1",
+"description": "user interfaces for shell scripts",
+"dependencies": "libc curses",
+"provides": "",
+"url": "http://hightek.org/dialog/"},
+"package": {"script": "build.sh"}}

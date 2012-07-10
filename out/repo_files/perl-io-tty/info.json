@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-io-tty", "version": "1.10",
+"description": "Perl TTY library",
+"dependencies": "perl",
+"provides": "perl-io-pty",
+"url": "http://search.cpan.org/~toddr/"},
+"package": {"script": "build.sh"}}

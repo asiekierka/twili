@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "python2.7", "version": "2.7.3",
+"description": "Python 2.7",
+"dependencies": "libc openssl ncurses bzip2",
+"provides": "python",
+"url": "http://python.org/"},
+"package": {"script": "build.sh"}}

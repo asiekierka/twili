@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "autoconf", "version": "2.69",
+"description": "GNU autoconf",
+"dependencies": "libc m4 perl",
+"provides": "",
+"url": "http://www.gnu.org/software/autoconf/"},
+"package": {"script": "build.sh"}}

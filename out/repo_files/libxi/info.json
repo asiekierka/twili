@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libxi", "version": "1.4.2",
+"description": "",
+"dependencies": "libc libxext inputproto",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

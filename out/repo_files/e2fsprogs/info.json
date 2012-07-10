@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "e2fsprogs", "version": "1.42.2",
+"description": "Ext2 Filesystems Utilities",
+"dependencies": "libc",
+"provides": "",
+"url": "http://e2fsprogs.sourceforge.net/"},
+"package": {"script": "build.sh"}}

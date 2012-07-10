@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xorg-util-macros", "version": "1.13.0",
+"description": "X.Org util macros",
+"dependencies": "libc",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

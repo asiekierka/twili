@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "fltk", "version": "1.3.0",
+"description": "fast light toolkit",
+"dependencies": "libc xorg-server libpng libjpeg",
+"provides": "",
+"url": "http://fltk.org/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "rxvt-unicode", "version": "9.15",
+"description": "rxvt-unicode terminal for X",
+"dependencies": "libc xorg-server libxau libxcb",
+"provides": "",
+"url": "http://dist.schmorp.de/"},
+"package": {"script": "build.sh"}}

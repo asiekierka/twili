@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "mpd", "version": "0.16.8-1",
+"description": "Music Player Daemon",
+"dependencies": "libc glib libmpg123 libogg libvorbis libmodplug",
+"provides": "",
+"url": "http://mpd.wikia.com/"},
+"package": {"script": "build.sh"}}

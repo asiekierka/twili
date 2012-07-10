@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "cowsay", "version": "3.03",
+"description": "a configurable cow",
+"dependencies": "libc perl",
+"provides": "",
+"url": "http://www.nog.net/~tony/warez/cowsay.shtml"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "videoproto", "version": "2.3.1",
+"description": "",
+"dependencies": "libc xorg-util-macros",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

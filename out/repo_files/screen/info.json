@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "screen", "version": "4.0.3",
+"description": "GNU screen",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/software/screen/"},
+"package": {"script": "build.sh"}}

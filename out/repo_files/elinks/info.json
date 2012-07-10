@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "elinks", "version": "0.11.7",
+"description": "elinks command-line web browser",
+"dependencies": "libc",
+"provides": "",
+"url": "http://elinks.or.cz/"},
+"package": {"script": "build.sh"}}

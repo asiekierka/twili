@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-compress-raw-zlib", "version": "2.051",
+"description": "Perl Low-Level Interface to zlib compression library",
+"dependencies": "perl",
+"provides": "",
+"url": "http://search.cpan.org/~pmqs/Compress-Raw-Zlib-2.051/lib/Compress/Raw/Zlib.pm"},
+"package": {"script": "build.sh"}}

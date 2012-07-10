@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "alsa-utils", "version": "1.0.25",
+"description": "ALSA utilities",
+"dependencies": "libc ncurses alsa-lib",
+"provides": "",
+"url": "http://www.alsa-project.org/"},
+"package": {"script": "build.sh"}}

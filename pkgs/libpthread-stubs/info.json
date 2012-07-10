@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libpthread-stubs", "version": "0.3",
+"description": "",
+"dependencies": "libc",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

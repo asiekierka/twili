@@ -1,0 +1,3 @@
+{"flags-old":"CC=\"musl-gcc\" CFLAGS=\"-Os -Wformat -Wformat-security\" LDFLAGS=\" \"",
+"flags":"CC=\"musl-gcc\" CFLAGS=\"-Os -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2\" LDFLAGS=\"-z relro -z now -Wl,-rpath-link=/lib\"",
+"repo":"http://twi.asiekierka.pl/repo/"}

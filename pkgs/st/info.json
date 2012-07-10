@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "st", "version": "0.1.1",
+"description": "st terminal for X",
+"dependencies": "libc libx11 libxdmcp libxcb libxau ncurses",
+"provides": "",
+"url": "http://hg.suckless.org/st/"},
+"package": {"script": "build.sh"}}

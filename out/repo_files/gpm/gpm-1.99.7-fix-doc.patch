@@ -1,0 +1,15 @@
+--- doc/Makefile.in
++++ doc/Makefile.in
+@@ -118,12 +118,6 @@
+ 	$(INSTALL_DATA) -m 644 gpm-types.7    $(man7dir)
+ 	$(INSTALL_DATA) -m 644 gpm.8          $(man8dir)
+ 	$(INSTALL_DATA) -m 644 $(srcdir)/gpm.info       $(infodir)
+-	# Use install-info if available
+-	-if $(SHELL) -c 'install-info --version' >/dev/null 2>&1; then \
+-	  if [ -f $(infodir)/dir ] ; then \
+-		install-info --dir-file=$(infodir)/dir $(infodir)/gpm.info; \
+-	  fi; \
+-	fi
+ 	#itz Sat Dec 26 23:21:05 PST 1998
+ 	#i keep all my infopages compressed and i'm tired to do it by
+ 	#hand, so check if there are any compressed pages and do this

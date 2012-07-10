@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "blackbox", "version": "0.70.1",
+"description": "blackbox window manager",
+"dependencies": "libc libx11 libxft",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

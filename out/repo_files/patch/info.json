@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "patch", "version": "2.6.1",
+"description": "GNU patch.",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/software/patch/"},
+"package": {"script": "build.sh"}}

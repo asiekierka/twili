@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "protobuf", "version": "2.4.1",
+"description": "Protocol Buffers library",
+"dependencies": "libc libstdc++",
+"provides": "",
+"url": "http://code.google.com/p/protobuf/"},
+"package": {"script": "build.sh", "dependencies": "g++"}}

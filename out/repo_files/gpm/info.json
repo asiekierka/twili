@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "gpm", "version": "1.99.7",
+"description": "general purpose mouse",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.nico.schottelius.org/software/gpm/"},
+"package": {"script": "build.sh"}}

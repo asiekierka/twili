@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "curl", "version": "7.25.0",
+"description": "cURL library",
+"dependencies": "libc zlib",
+"provides": "",
+"url": "http://www.gmplib.org/"},
+"package": {"script": "build.sh"}}

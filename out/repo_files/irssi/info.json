@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "irssi", "version": "0.8.15",
+"description": "irssi IRC client",
+"dependencies": "libc glib",
+"provides": "",
+"url": "http://www.irssi.org/"},
+"package": {"script": "build.sh", "dependencies": ""}}

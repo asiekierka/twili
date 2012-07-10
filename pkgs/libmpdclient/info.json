@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libmpdclient", "version": "2.7",
+"description": "library for interfacing with MPD clients",
+"dependencies": "libc mpd glib",
+"provides": "",
+"url": "http://mpd.wikia.com/"},
+"package": {"script": "build.sh"}}

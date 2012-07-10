@@ -1,0 +1,8 @@
+#!/bin/sh
+cd out
+rm *.ppk
+cd ../pkgs
+for i in *; do echo "Making $i"; cd $i; tar cvjf $i.ppk *; mv $i.ppk ../../out; cd ..; done
+cd ../out
+cp ../repo/* .
+../pppkg-repo.pl .

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "SDL_net", "version": "1.2.8",
+"description": "SDL networking library",
+"dependencies": "libc SDL",
+"provides": "",
+"url": "http://www.libsdl.org/projects/SDL_net/"},
+"package": {"script": "build.sh"}}

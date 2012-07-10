@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-compress-raw-bzip2", "version": "2.049",
+"description": "Perl Low-Level Interface to bzip2 compression library",
+"dependencies": "perl",
+"provides": "",
+"url": "http://search.cpan.org/~pmqs/Compress-Raw-Bzip2-2.049/lib/Compress/Raw/Bzip2.pm"},
+"package": {"script": "build.sh"}}

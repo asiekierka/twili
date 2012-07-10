@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libvorbis", "version": "1.3.2",
+"description": "Vorbis library",
+"dependencies": "libc libogg",
+"provides": "",
+"url": "http://www.xiph.org/"},
+"package": {"script": "build.sh"}}

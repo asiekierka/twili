@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "slang", "version": "2.1.4",
+"description": "multi-platform programmer's library",
+"dependencies": "libc",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

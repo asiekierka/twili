@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "sed", "version": "4.2.1",
+"description": "sed, a stream editor.",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/s/sed/"},
+"package": {"script": "build.sh"}}

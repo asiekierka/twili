@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "SDL", "version": "1.2.15-1",
+"description": "SDL library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.libsdl.org/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "wget", "version": "1.13.4",
+"description": "GNU wget.",
+"dependencies": "libc openssl",
+"provides": "wget-ssl",
+"url": "http://www.gnu.org/software/wget/"},
+"package": {"script": "build.sh"}}

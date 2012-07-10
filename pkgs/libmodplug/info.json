@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libmodplug", "version": "0.8.8.4",
+"description": "S3XMODIT and others library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://modplug-xmms.sourceforge.net/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libmpg123", "version": "1.13.8",
+"description": "MPEG-3 decoder library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.mpg123.de/"},
+"package": {"script": "build.sh"}}

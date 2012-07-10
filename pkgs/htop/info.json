@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "htop", "version": "1.0.1",
+"description": "an interactve process viewer",
+"dependencies": "libc ncurses",
+"provides": "",
+"url": "http://htop.sourceforge.net/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,21 @@
+--- update-ca-certificates
++++ update-ca-certificates
+@@ -38,7 +38,8 @@
+ done
+ 
+ CERTSCONF=${DESTDIR}/etc/ca-certificates.conf
+-CERTSDIR=${DESTDIR}/share/ca-certificates
++N_CERTSDIR=/share/ca-certificates
++CERTSDIR=${DESTDIR}${N_CERTSDIR}
+ LOCALCERTSDIR=${DESTDIR}/local/share/ca-certificates
+ CERTBUNDLE=ca-certificates.crt
+ ETCCERTSDIR=${DESTDIR}/etc/ssl/certs
+@@ -114,7 +115,7 @@
+     echo "W: $CERTSDIR/$crt not found, but listed in $CERTSCONF." >&2
+     continue
+   fi
+-  add "$CERTSDIR/$crt"
++  add "$N_CERTSDIR/$crt"
+ done
+ 
+ # Now process certificate authorities installed by the local system

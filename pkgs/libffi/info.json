@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libffi", "version": "3.0.10",
+"description": "A Portable Foreign Function Interface Library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.sourceware.org/libffi/"},
+"package": {"script": "build.sh"}}

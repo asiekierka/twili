@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xkeyboard-config", "version": "1.4",
+"description": "",
+"dependencies": "libc xkbcomp gettext intltool",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

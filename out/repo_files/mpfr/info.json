@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "mpfr", "version": "3.1.0",
+"description": "GNU MPFR",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.mpfr.org/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xf86-video-vesa", "version": "2.3.0",
+"description": "VESA support for X",
+"dependencies": "libc xorg-server",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

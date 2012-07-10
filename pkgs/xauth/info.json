@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xauth", "version": "1.0.5",
+"description": "",
+"dependencies": "libc libx11 libxext libxmu libxau",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

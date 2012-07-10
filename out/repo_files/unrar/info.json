@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "unrar", "version": "4.1.1",
+"description": "unrar, a decompression utility",
+"dependencies": "libc libstdc++",
+"provides": "",
+"url": "http://www.rarlab.com/"},
+"package": {"script": "build.sh", "dependencies": "g++"}}

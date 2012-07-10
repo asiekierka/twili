@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "pppkg", "version": "0.3-7",
+"description": "Portable Perl PacKaGist",
+"dependencies": "libc busybox perl perl-json perl-io-compress",
+"provides": "",
+"url": "http://github.com/asiekierka/pppkg"},
+"package": {"script": "build.sh", "dependencies": "wget openssl"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "xz", "version": "5.0.3",
+"description": "XZ Utils",
+"dependencies": "libc",
+"provides": "liblzma",
+"url": "http://www.tukaani.org/xz"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "gettext", "version": "0.18.1.1",
+"description": "GNU Gettext library",
+"dependencies": "libc ncurses",
+"provides": "",
+"url": "http://www.gnu.org/software/gettext/"},
+"package": {"script": "build.sh"}}

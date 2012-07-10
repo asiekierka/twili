@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "busybox", "version": "1.19.4-5",
+"description": "The Swiss Army Knife of Embedded Linux",
+"dependencies": "libc",
+"provides": "",
+"url": "http://busybox.net/"},
+"package": {"script": "build.sh", "preinstall": "pre.sh", "postinstall": "post.sh"}}

@@ -1,0 +1,15 @@
+--- Makefile
++++ Makefile
+@@ -37,10 +37,9 @@
+ 
+ HDRS = gpm.h gpmInt.h twiddler.h synaptics.h message.h
+ 
+-PSRC = prog/mev.c prog/hltest.c prog/mouse-test.c prog/disable-paste.c			\
+-		 prog/display-buttons.c  prog/display-coords.c prog/get-versions.c
++PSRC = prog/mev.c prog/hltest.c prog/mouse-test.c prog/get-versions.c
+ 
+-POBJ = $(PSRC:.c=.o) prog/gpm-root.o
++POBJ = $(PSRC:.c=.o) prog/gpm-root.o
+ 
+ PROG = $(POBJ:.o=)
+ 

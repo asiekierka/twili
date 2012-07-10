@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "unzip", "version": "6.0",
+"description": "unzip, a decompression utility",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.info-zip.org/"},
+"package": {"script": "build.sh"}}

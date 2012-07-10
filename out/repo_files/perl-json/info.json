@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-json", "version": "2.53",
+"description": "Perl JSON library",
+"dependencies": "perl",
+"provides": "",
+"url": "http://search.cpan.org/~makamaka/"},
+"package": {"script": "build.sh"}}

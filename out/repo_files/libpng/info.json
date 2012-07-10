@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libpng", "version": "1.5.10",
+"description": "PNG library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.libpng.org/pub/png/libpng.html"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "zip", "version": "3.0",
+"description": "zip, a compression and file packaging/archive utility",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.info-zip.org/"},
+"package": {"script": "build.sh"}}

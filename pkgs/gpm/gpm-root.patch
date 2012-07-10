@@ -1,0 +1,15 @@
+--- prog/gpm-root.y
++++ prog/gpm-root.y
+@@ -1196,11 +1196,7 @@
+                                                         LOG_DAEMON : LOG_USER);
+    /* reap your zombies */
+    childaction.sa_handler=reap_children;
+-#if defined(__GLIBC__)
+-   __sigemptyset(&childaction.sa_mask);
+-#else /* __GLIBC__ */
+-   childaction.sa_mask=0;
+-#endif /* __GLIBC__ */
++   sigemptyset(&childaction.sa_mask);
+    childaction.sa_flags=SA_RESTART; /* need to break the select() call */
+    sigaction(SIGCHLD,&childaction,NULL);
+ 

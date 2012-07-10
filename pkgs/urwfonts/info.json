@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "urwfonts", "version": "8.71",
+"description": "URW TTF fonts.",
+"dependencies": "",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh", "post-install": "fc-cache.sh", "post-uninstall": "fc-cache.sh"}}

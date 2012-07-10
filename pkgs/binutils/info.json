@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "binutils", "version": "2.22",
+"description": "A collection of binary tools.",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/software/binutils/"},
+"package": {"script": "build.sh"}}

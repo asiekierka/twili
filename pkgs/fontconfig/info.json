@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "fontconfig", "version": "2.9.0",
+"description": "a library for configuring and customizing font access",
+"dependencies": "libc freetype zlib bzip2 expat",
+"provides": "",
+"url": "http://www.fontconfig.org/"},
+"package": {"script": "build.sh"}}

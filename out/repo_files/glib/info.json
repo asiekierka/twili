@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "glib", "version": "2.31.22",
+"description": "G Library",
+"dependencies": "libc gettext libffi",
+"provides": "",
+"url": "http://www.gnome.org/"},
+"package": {"script": "build.sh"}}

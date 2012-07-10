@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "freetype", "version": "2.4.9",
+"description": "freetype2",
+"dependencies": "libc zlib",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

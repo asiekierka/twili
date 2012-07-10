@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "dejavu-fonts", "version": "2.33",
+"description": "DejaVu TTF fonts.",
+"dependencies": "",
+"provides": "",
+"url": "http://dejavu-fonts.org/"},
+"package": {"script": "build.sh", "post-install": "fc-cache.sh", "post-uninstall": "fc-cache.sh"}}

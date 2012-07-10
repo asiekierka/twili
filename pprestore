@@ -1,0 +1,3 @@
+#!/bin/sh
+cd out
+for i in *; do echo "Restoring $i"; j=$(echo "$i" | sed 's/\.[^\.]*$//'); mkdir "../pkgs/$j"; cp "$i" "../pkgs/$j/"; cd "../pkgs/$j/"; tar xf "$i"; rm "$i"; cd ../../out; done

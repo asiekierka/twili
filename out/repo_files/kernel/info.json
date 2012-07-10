@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "kernel", "version": "3.2.14-2",
+"description": "Linux kernel.",
+"dependencies": "",
+"provides": "",
+"url": "http://www.kernel.org/"},
+"package": {"script": "build.sh"}}

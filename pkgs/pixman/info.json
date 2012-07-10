@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "pixman", "version": "0.21.6",
+"description": "",
+"dependencies": "libc perl",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}

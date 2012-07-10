@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "nano", "version": "2.3.1",
+"description": "GNU nano",
+"dependencies": "libc ncurses",
+"provides": "",
+"url": "http://www.nano-editor.org/"},
+"package": {"script": "build.sh"}}

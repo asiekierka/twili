@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "ncmpc", "version": "0.20",
+"description": "ncurses mpd client",
+"dependencies": "libc mpd ncurses libmpdclient",
+"provides": "",
+"url": "http://mpd.wikia.com/"},
+"package": {"script": "build.sh"}}

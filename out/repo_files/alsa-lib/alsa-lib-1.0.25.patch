@@ -1,0 +1,87 @@
+--- alo/src/conf.c
++++ al0/src/conf.c
+@@ -427,8 +427,7 @@
+ #ifndef DOC_HIDDEN
+ 
+ #ifdef HAVE_LIBPTHREAD
+-static pthread_mutex_t snd_config_update_mutex =
+-				PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
++static pthread_mutex_t snd_config_update_mutex = PTHREAD_MUTEX_INITIALIZER;
+ #endif
+ 
+ struct _snd_config {
+@@ -3505,7 +3504,7 @@
+ 			struct dirent **namelist;
+ 			int n;
+ 
+-			n = scandir(fi[idx].name, &namelist, config_filename_filter, versionsort);
++			n = scandir(fi[idx].name, &namelist, config_filename_filter, alphasort);
+ 			if (n > 0) {
+ 				int j;
+ 				err = 0;
+--- alo/src/dlmisc.c
++++ al0/src/dlmisc.c
+@@ -58,9 +58,9 @@
+ 	if (name == NULL) {
+ 		static const char * self = NULL;
+ 		if (self == NULL) {
+-			Dl_info dlinfo;
+-			if (dladdr(snd_dlopen, &dlinfo) > 0)
+-				self = dlinfo.dli_fname;
++//			Dl_info dlinfo;
++//			if (dladdr(snd_dlopen, &dlinfo) > 0)
++//				self = dlinfo.dli_fname;
+ 		}
+ 		name = self;
+ 	}
+--- alo/include/global.h
++++ al0/include/global.h
+@@ -30,6 +30,7 @@
+
+ /* for timeval and timespec */
+ #include <time.h>
++#include <sys/types.h>
+
+ #ifdef __cplusplus
+ extern "C" {
+--- alo/include/search.h
++++ al0/include/search.h
+@@ -52,9 +52,4 @@
+ /* For use with hsearch(3).  */
+ #ifndef __COMPAR_FN_T
+ # define __COMPAR_FN_T
+-typedef int (*__compar_fn_t) __PMT ((__const __ptr_t, __const __ptr_t));
+-
+-# ifdef	__USE_GNU
+-typedef __compar_fn_t comparison_fn_t;
+-# endif
+ #endif
+--- alo/src/ucm/parser.c
++++ al0/src/ucm/parser.c
+@@ -1254,7 +1254,7 @@
+ 		"%s", env ? env : ALSA_USE_CASE_DIR);
+ 	filename[MAX_FILE-1] = '\0';
+ 
+-	err = scandir(filename, &namelist, filename_filter, versionsort);
++	err = scandir(filename, &namelist, filename_filter, alphasort);
+ 	if (err < 0) {
+ 		err = -errno;
+ 		uc_error("error: could not scan directory %s: %s",
+--- alo/include/global.h
++++ al0/include/global.h
+@@ -135,15 +135,6 @@
+ int snd_user_file(const char *file, char **result);
+ 
+ #if !defined(_POSIX_C_SOURCE) && !defined(_POSIX_SOURCE)
+-struct timeval {
+-	time_t		tv_sec;		/* seconds */
+-	long		tv_usec;	/* microseconds */
+-};
+-
+-struct timespec {
+-	time_t		tv_sec;		/* seconds */
+-	long		tv_nsec;	/* nanoseconds */
+-};
+ #endif
+ 
+ /** Timestamp */

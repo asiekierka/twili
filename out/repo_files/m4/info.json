@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "m4", "version": "1.4.16",
+"description": "GNU macro processor",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/software/m4/"},
+"package": {"script": "build.sh"}}

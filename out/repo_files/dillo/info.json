@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "dillo", "version": "3.0.2",
+"description": "Dillo web browser",
+"dependencies": "libc xorg-server fltk libpng libjpeg",
+"provides": "",
+"url": "http://dillo.org/"},
+"package": {"script": "build.sh"}}

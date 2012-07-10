@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "boost", "version": "1.49.0",
+"description": "Boost, the incredibly bloated C++ library that some things use",
+"dependencies": "libc",
+"provides": "",
+"url": "http://boost.org"},
+"package": {"script": "build.sh"}}

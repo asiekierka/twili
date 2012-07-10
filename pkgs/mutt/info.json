@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "mutt", "version": "1.4.2.3",
+"description": "a powerful text-based email client",
+"dependencies": "libc ncurses",
+"provides": "",
+"url": "http://www.mutt.org"},
+"package": {"script": "build.sh"}}

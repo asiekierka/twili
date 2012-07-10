@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "gawk", "version": "4.0.0",
+"description": "GNU awk.",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/software/awk/"},
+"package": {"script": "build.sh"}}

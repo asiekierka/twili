@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "intltool", "version": "0.40.6",
+"description": "",
+"dependencies": "libc perl perl-xml-parser",
+"provides": "",
+"url": "http://gnome.org"},
+"package": {"script": "build.sh"}}

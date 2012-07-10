@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "tmux", "version": "1.6-1",
+"description": "a terminal multiplexer",
+"dependencies": "libc libevent",
+"provides": "",
+"url": "http://tmux.sourceforge.net/"},
+"package": {"script": "build.sh"}}

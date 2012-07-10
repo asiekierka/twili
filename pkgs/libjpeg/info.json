@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libjpeg", "version": "8d",
+"description": "JPEG library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.ijd.org/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "fluxbox", "version": "1.3.2",
+"description": "fluxbox window manager",
+"dependencies": "libc xorg-server",
+"provides": "",
+"url": "http://fluxbox.org"},
+"package": {"script": "build.sh"}}

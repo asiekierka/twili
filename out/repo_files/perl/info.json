@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl", "version": "5.16.0",
+"description": "perl, the programming language.",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.perl.org/"},
+"package": {"script": "build.sh"}}

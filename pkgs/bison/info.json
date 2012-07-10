@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "bison", "version": "2.4.3",
+"description": "GNU bison",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.gnu.org/software/bison/"},
+"package": {"script": "build.sh"}}

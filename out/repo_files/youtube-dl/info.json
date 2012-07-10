@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "youtube-dl", "version": "",
+"description": "YouTube downloader script",
+"dependencies": "libc python",
+"provides": "",
+"url": ""},
+"package": {"script": ""}}

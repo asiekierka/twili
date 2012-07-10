@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libtool", "version": "2.4.2",
+"description": "GNU generic library support script",
+"dependencies": "libc m4",
+"provides": "",
+"url": "http://www.gnu.org/software/libtool/"},
+"package": {"script": "build.sh"}}

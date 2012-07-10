@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "perl-unix-processors", "version": "2.042",
+"description": "Perl interface to CPU information",
+"dependencies": "perl",
+"provides": "",
+"url": "http://search.cpan.org/~wsnyder/Unix-Processors-2.042/"},
+"package": {"script": "build.sh"}}

@@ -1,0 +1,143 @@
+From 8894159c099f993a69a6dd02d92c1ce54f683500 Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Fri, 13 Jan 2012 10:09:10 -0500
+Subject: [PATCH] build: Add --disable-modular-tests build option
+
+This allows builders to optionally cut the circular dependency between
+dbus and glib by disabling the modular tests (just like how the tests
+can be disabled in dbus).
+
+It also moves us slightly closer to the long term future we want where
+the tests are a separate ./configure invocation and run against the
+INSTALLED glib, not the one in the source tree.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=667806
+---
+ Makefile.am         |    7 ++++++-
+ configure.ac        |   19 +++++++++++++------
+ gio/Makefile.am     |    7 ++++++-
+ glib/Makefile.am    |    8 +++++++-
+ gobject/Makefile.am |    8 +++++++-
+ 5 files changed, 39 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f5c510d..55be9d2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,8 +6,13 @@ include $(top_srcdir)/Makefile.decl
+ 
+ ACLOCAL_AMFLAGS = -I m4macros ${ACLOCAL_FLAGS}
+ 
+-SUBDIRS = . m4macros glib gmodule gthread gobject gio tests po docs
++SUBDIRS = . m4macros glib gmodule gthread gobject gio po docs
+ DIST_SUBDIRS = $(SUBDIRS) build
++if BUILD_MODULAR_TESTS
++SUBDIRS += tests 
++else
++DIST_SUBDIRS += tests
++endif
+ 
+ bin_SCRIPTS = glib-gettextize
+ 
+diff --git a/configure.ac b/configure.ac
+index 2225520..37ad8c5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -229,6 +229,11 @@ AC_ARG_ENABLE(rebuilds,
+               [AC_HELP_STRING([--disable-rebuilds],
+                               [disable all source autogeneration rules])],,
+               [enable_rebuilds=yes])
++AC_ARG_ENABLE(modular-tests,
++              AC_HELP_STRING([--enable-modular-tests],
++                             [build test programs]),,
++              enable_modular_tests=yes)
++AM_CONDITIONAL(BUILD_MODULAR_TESTS, test x$enable_modular_tests = xyes)
+ 
+ AC_MSG_CHECKING([whether to enable garbage collector friendliness])
+ if test "x$enable_gc_friendly" = "xyes"; then
+@@ -3391,12 +3396,14 @@ fi
+ # Check for libdbus1 - Optional - is only used in the GDBus test cases
+ #
+ # 1.2.14 required for dbus_message_set_serial
+-PKG_CHECK_MODULES(DBUS1,
+-                  dbus-1 >= 1.2.14,
+-                  [AC_DEFINE(HAVE_DBUS1, 1, [Define if dbus-1 is available]) have_dbus1=yes],
+-                  have_dbus1=no)
+-AC_SUBST(DBUS1_CFLAGS)
+-AC_SUBST(DBUS1_LIBS)
++if test x$enable_modular_tests = xyes; then
++   PKG_CHECK_MODULES(DBUS1,
++                     dbus-1 >= 1.2.14,
++                     [AC_DEFINE(HAVE_DBUS1, 1, [Define if dbus-1 is available]) have_dbus1=yes],
++                     have_dbus1=no)
++   AC_SUBST(DBUS1_CFLAGS)
++   AC_SUBST(DBUS1_LIBS)
++fi
+ AM_CONDITIONAL(HAVE_DBUS1, [test "x$have_dbus1" = "xyes"])
+ 
+ dnl
+diff --git a/gio/Makefile.am b/gio/Makefile.am
+index d237787..e4409eb 100644
+--- a/gio/Makefile.am
++++ b/gio/Makefile.am
+@@ -2,6 +2,7 @@ include $(top_srcdir)/Makefile.decl
+ 
+ NULL =
+ 
++DIST_SUBDIRS =
+ SUBDIRS = gdbus-2.0/codegen
+ 
+ if OS_UNIX
+@@ -306,7 +307,11 @@ giowin32include_HEADERS = \
+ 
+ endif
+ 
+-SUBDIRS += tests
++if BUILD_MODULAR_TESTS
++SUBDIRS += tests 
++else
++DIST_SUBDIRS += tests
++endif
+ 
+ libgio_2_0_la_SOURCES =		\
+ 	gappinfo.c 		\
+diff --git a/glib/Makefile.am b/glib/Makefile.am
+index 1b427c3..0a7c107 100644
+--- a/glib/Makefile.am
++++ b/glib/Makefile.am
+@@ -42,7 +42,13 @@ gregex_c =
+ gregex_h =
+ endif
+ 
+-SUBDIRS = libcharset $(PRINTF_SUBDIR) $(MAYBE_PCRE) update-pcre . tests
++SUBDIRS = libcharset $(PRINTF_SUBDIR) $(MAYBE_PCRE) update-pcre .
++DIST_SUBDIRS =
++if BUILD_MODULAR_TESTS
++SUBDIRS += tests 
++else
++DIST_SUBDIRS += tests
++endif
+ 
+ DIST_SUBDIRS = libcharset gnulib pcre update-pcre tests
+ 
+diff --git a/gobject/Makefile.am b/gobject/Makefile.am
+index 5c84699..5d7ac4b 100644
+--- a/gobject/Makefile.am
++++ b/gobject/Makefile.am
+@@ -4,7 +4,13 @@
+ ## Process this file with automake to produce Makefile.in
+ include $(top_srcdir)/Makefile.decl
+ 
+-SUBDIRS = . tests
++SUBDIRS = .
++DIST_SUBDIRS =
++if BUILD_MODULAR_TESTS
++SUBDIRS += tests 
++else
++DIST_SUBDIRS += tests
++endif
+ 
+ BUILT_SOURCES=
+ CLEANFILES=
+-- 
+1.7.6.4

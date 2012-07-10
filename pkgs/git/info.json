@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "git", "version": "1.7.9.6",
+"description": "git version control system",
+"dependencies": "libc openssl perl gettext curl",
+"provides": "",
+"url": "http://www.git.scm.com/"},
+"package": {"script": "build.sh"}}

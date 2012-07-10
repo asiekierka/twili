@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "libevent", "version": "2.0.18",
+"description": "an event notification library",
+"dependencies": "libc",
+"provides": "",
+"url": "http://www.libevent.org/"},
+"package": {"script": "build.sh", "dependencies": "wget-ssl"}}

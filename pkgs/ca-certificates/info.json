@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "ca-certificates", "version": "1",
+"description": "Debian's CA certificates",
+"dependencies": "libc",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh", "postinstall": "pi.sh", "preuninstall": "pu.sh"}}

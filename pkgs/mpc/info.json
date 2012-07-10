@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "mpc", "version": "0.9",
+"description": "C library for arithmetic of complex numbers",
+"dependencies": "libc mpfr",
+"provides": "",
+"url": "http://www.multiprecision.org/"},
+"package": {"script": "build.sh"}}
