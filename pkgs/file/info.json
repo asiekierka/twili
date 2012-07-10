@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "file", "version": "5.07",
+"description": "file",
+"dependencies": "libc",
+"provides": "",
+"url": ""},
+"package": {"script": "build.sh"}}
