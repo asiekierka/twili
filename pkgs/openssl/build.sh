@@ -24,7 +24,7 @@ make clean
 touch include/memory.h
 make build_libs || exit 1
 make build-shared || exit 1
-cp -f *.so* /lib
+cp -f *.so* $1/lib
 
 cd ..
 rm -rf openssl-$VER

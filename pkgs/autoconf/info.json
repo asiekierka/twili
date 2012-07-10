@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "autoconf", "version": "2.69",
+"meta": {"name": "autoconf", "version": "2.69-1",
 "description": "GNU autoconf",
 "dependencies": "libc m4 perl",
 "provides": "",

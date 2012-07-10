@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "curl", "version": "7.25.0",
+"meta": {"name": "curl", "version": "7.25.0-1",
 "description": "cURL library",
 "dependencies": "libc zlib",
 "provides": "",

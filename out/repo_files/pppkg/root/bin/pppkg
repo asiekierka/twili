@@ -492,29 +492,33 @@ sub process_cmd {
 		}
 		if(exists($repo->{packages}->{$package}))
 		{
-			my $deps = $repo->{packages}->{$package}->{meta}->{dependencies};
 			my $fn = $repo->{packages}->{$package}->{filename};
-			if($dep_depth<1) { check_deps_die($deps); }
-			my @deps = check_dependencies($deps);
-			my $dlen = @deps;
-			if($dlen>0)
-			{
-				$dep_depth--;
-				my $oldpkg = $package;
-				foreach $dep (@deps) {
-					my $oldcmd = $command;
-					$package = $dep;
-					process_cmd();
-					$command = $oldcmd;
+			if($command ne "download") {
+				my $deps = $repo->{packages}->{$package}->{meta}->{dependencies};
+				if($dep_depth<1) { check_deps_die($deps); }
+				my @deps = check_dependencies($deps);
+				my $dlen = @deps;
+				if($dlen>0)
+				{
+					$dep_depth--;
+					my $oldpkg = $package;
+					foreach $dep (@deps) {
+						my $oldcmd = $command;
+						$package = $dep;
+						process_cmd();
+						$command = $oldcmd;
+					}
+					$package = $oldpkg;
 				}
-				$package = $oldpkg;
+				if($command ne "dri" && is_installed($package)){ die_error("The package is already installed! Uninstall it first.",11); }
 			}
-			if($command ne "dri" && is_installed($package)){ die_error("The package is already installed! Uninstall it first.",11); }
 			print "Downloading...\n";
 			if($command eq "di") {
 				$dlprefix = tempdir("/tmp/pkgdl-XXXXXX", CLEANUP => ($verbose>1?0:1)) . "/";
 			}
-			chdir $dlprefix;
+			if($dlprefix ne "") {
+				chdir $dlprefix;
+			}
 			download_file($config->{repo} . "/" . $repo->{packages}->{$package}->{filename}, $repo->{packages}->{$package}->{filename});
 			print "Downloaded!\n";
 		}
@@ -540,7 +544,7 @@ sub process_cmd {
 	} elsif($command eq "install" || $command eq "reinstall") { cmd_install(); }
 	elsif($command eq "remove") { cmd_uninstall(); }
 	elsif($command eq "list") { cmd_list(); }
-	else { die_error("No command specified.\nUse -h for help."); }
+	elsif($command ne "download") { die_error("No command specified.\nUse -h for help."); }
 }
 process_cmd();
 exit(0);

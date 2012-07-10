@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "openssl", "version": "1.0.1a",
+"meta": {"name": "openssl", "version": "1.0.1a-1",
 "description": "OpenSSL",
 "dependencies": "libc zlib perl",
 "provides": "",

@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "automake", "version": "1.12.1",
+"meta": {"name": "automake", "version": "1.12.1-1",
 "description": "GNU automake",
 "dependencies": "libc autoconf",
 "provides": "",

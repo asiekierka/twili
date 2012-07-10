@@ -8,8 +8,8 @@ cd binutils-$VER
 sed -i 's/linux-gnu\* |/linux-gnu* | linux-musl* |/' config.sub
 echo "#define __pid_t int" >include/features.h
 
-./configure --target=i386-unknown-linux-musl --disable-shared --disable-nls --prefix=/
-make all-binutils all-ld all-gas
+./configure --target=i386-unknown-linux-musl --disable-shared --disable-nls --disable-werror --prefix=/
+make CC="/bin/musl-gcc -static -D_GNU_SOURCE -D_LARGEFILE64_SOURCE" all-binutils all-ld all-gas
 make DESTDIR=$1 tooldir=/ install-binutils install-ld install-gas
 
 for i in addr2line c++filt elfedit gprof ld ld.bfd readelf size;do

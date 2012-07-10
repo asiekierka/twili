@@ -23,7 +23,7 @@ then
         CONFFLAGS="$CONFFLAGS --with-libidn"
 fi
 rm list.tmp
-LDFLAGS="$LDFLAGS -Wl,-rpath-link=/lib" ./configure $CONFFLAGS || exit 1
+CFLAGS="-D_GNU_SOURCE -Wl,-rpath-link=/lib" ./configure $CONFFLAGS || exit 1
 make || exit 1
 make -j1 DESTDIR=$1 install || exit 1
 cd ..

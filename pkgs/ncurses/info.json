@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "ncurses", "version": "5,9",
+"meta": {"name": "ncurses", "version": "5.9",
 "description": "new curses library",
 "dependencies": "libc",
 "provides": "curses",
