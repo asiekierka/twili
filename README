@@ -3,6 +3,12 @@ Use ppmake to make a repo from the pkgs/ files and pprestore to make a pkgs/ fro
 ppnewpkg lets you easily add a package.
 
 THINGS TO REMEMBER:
-
 - When you have a piece of code that can easily change and make a patch incompatible, sed may be a good idea.
 - Forking is fine! Send pull requests! Help us grow!
+
+TODO:
+
+- Add env var support (PP_APP_VER, PP_APP_NAME, etc) to pppkg
+- Port busybox 1.20.2 from https://github.com/rofl0r/sabotage/blob/master/pkg/busybox
+- Fix X server (non-kdrive) [IMPORTANT]
+- Test pkgconf as a replacement for pkg-config
