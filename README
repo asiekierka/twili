@@ -1,1 +1,8 @@
 Use ppmake to make a repo from the pkgs/ files and pprestore to make a pkgs/ from a repo in out.
+
+ppnewpkg lets you easily add a package.
+
+THINGS TO REMEMBER:
+
+- When you have a piece of code that can easily change and make a patch incompatible, sed may be a good idea.
+- Forking is fine! Send pull requests! Help us grow!
