@@ -12,3 +12,4 @@ TODO:
 - Port busybox 1.20.2 from https://github.com/rofl0r/sabotage/blob/master/pkg/busybox
 - Fix X server (non-kdrive) [IMPORTANT]
 - Test pkgconf as a replacement for pkg-config
+- Add xz to packages [when we have new chroot with builtin xz]
