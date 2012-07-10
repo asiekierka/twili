@@ -1,0 +1,26 @@
+#!/bin/sh
+echo "P.P. new package template generator"
+echo -n "Package name: "
+read pkgname
+mkdir pkgs/$pkgname
+echo -n "Version: "
+read ver
+echo -n "Short description: "
+read desc
+echo -n "URL: "
+read url
+echo -n "Dependencies: "
+read deps
+echo -n "Faux packages it provides: "
+read prov
+cat <<EOF >pkgs/$pkgname/info.json
+{"version": 1,
+"meta": {"name": "$pkgname", "version": "$ver",
+"description": "$desc",
+"dependencies": "$deps",
+"provides": "$prov",
+"url": "$url"},
+"package": {"script": "build.sh"}}
+EOF
+cp templates/build-dummy.sh pkgs/$pkgname/build.sh
+chmod 755 pkgs/$pkgname/build.sh
