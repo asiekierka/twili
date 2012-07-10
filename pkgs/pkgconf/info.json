@@ -1,0 +1,8 @@
+{"version": 1,
+"meta": {"name": "pkgconf", "version": "0.8",
+"description": "pkgconf, a lightweight pkg-config replacement.",
+"dependencies": "libc",
+"provides": "pkg-config",
+"priority": "4",
+"url": "https://github.com/nenolod/pkgconf"},
+"package": {"script": "build.sh"}}
