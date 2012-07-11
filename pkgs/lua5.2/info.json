@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "lua5.2", "version": "5.2.1",
+"description": "Lua programming language",
+"dependencies": "libc",
+"provides": "lua5 lua",
+"url": "http://lua.org/"},
+"package": {"script": "build.sh"}}
