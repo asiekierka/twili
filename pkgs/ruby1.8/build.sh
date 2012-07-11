@@ -8,7 +8,7 @@ cd $APP-$VER
 
 sed -i 's/#include <unistd.h>/#include <unistd.h>\n#undef __syscall/' io.c
 
-./configure
+./configure --prefix=/
 make
 make -j1 install DESTDIR=$1
 cd ..
