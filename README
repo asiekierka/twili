@@ -6,6 +6,19 @@ THINGS TO REMEMBER:
 - When you have a piece of code that can easily change and make a patch incompatible, sed may be a good idea.
 - Forking is fine! Send pull requests! Help us grow!
 
+INSTALLATION:
+1. Grab a chroot ( http://twi.asiekierka.pl/chroot2v1.tar.bz2 )
+2. Unpack it somewhere. Anywhere.
+3. sudo setarch i686 chroot . (you don't need setarch on 32-bit platforms)
+4. ./init.sh to initialize /dev, /proc and /sys
+4a. You may also want to set MAKEFLAGS to -j2 on a dualcore or -j3 on a quad or whatever
+5. mkdir output - for the installation process
+6. Download the installer ( http://twi.asiekierka.pl/installer.tar.bz2 )
+7. /install/installer.pl
+7a. Give it /output/ as the path.
+7b. Make a nice cup of tea, coffee or whatever.
+8. You got a working Twili in /output/.
+
 TODO:
 
 - Add env var support (PP_APP_VER, PP_APP_NAME, etc) to pppkg
