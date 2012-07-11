@@ -1,0 +1,7 @@
+{"version": 1,
+"meta": {"name": "ruby1.8", "version": "1.8.7-p358",
+"description": "ruby language",
+"dependencies": "libc",
+"provides": "",
+"url": "http://ruby-lang.org/"},
+"package": {"script": "build.sh"}}

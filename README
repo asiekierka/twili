@@ -6,6 +6,9 @@ THINGS TO REMEMBER:
 - When you have a piece of code that can easily change and make a patch incompatible, sed may be a good idea.
 - Forking is fine! Send pull requests! Help us grow!
 
+KNOWN BUGS:
+- __syscallarg not defined - add "#undef __syscall" before the code tha breaks.
+
 INSTALLATION:
 1. Grab a chroot ( http://twi.asiekierka.pl/chroot2v1.tar.bz2 )
 2. Unpack it somewhere. Anywhere.
