@@ -30,9 +30,6 @@ TODO:
 - Test pkgconf as a replacement for pkg-config
 - Add xz to packages [when we have new chroot with builtin xz]
 - Work on bash or another sh replacement [zsh being integrated ASAP]
-- Fix pppkg bugs:
-  - Tends to error when a package is tried to be installed again in a 
-large loop
 
 BROKEN PACKAGES:
 - lighttpd (UIO_MAXIOV)

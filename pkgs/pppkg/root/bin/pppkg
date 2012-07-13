@@ -50,7 +50,7 @@ sub download_file {
 	my $f = open(FILE, ">", $out)
 		or die_error("Error opening file '".$out."' for writing!",13);
 	my $response = $http->get($url);
-	die_error("Errror download file '".$url."'!",13) unless $response->{success};
+	die_error("Error downloading file '".$url."'!",13) unless $response->{success};
 	print FILE $response->{content};
 	close(FILE);
 }
@@ -76,14 +76,16 @@ sub hardlink_copy {
 		$file=~s/\n//g;
 		if($command eq "reinstall" && !db_can_own($pkgname,$file)) { next; }
 		if($verbose>=2) { print $dest.$file . "\n"; }
+		# Does destination file exist?
 		if(-f $dest.$file) { unlink $dest.$file; if($command ne "reinstall"){ print "Overwriting " . $file . "!\n"; } }
+		# Is the source a symlink?
 		if(-l $src.$file) {
 			unless(-e ($dest.$file)) { symlink(readlink($src.$file),$dest.$file); }
 		}
-		elsif(-f $src.$file) {
+		elsif(-f $src.$file) { # Perhaps a file?
 			$errcode = system("ln ".$src.$file." ".$dest.$file);
 			unless($errcode==0) { if($force<1) { print "[WARNING] Error while hardlinking " . $file . "!\n"; } }
-		} elsif(-d $src.$file) {
+		} elsif(-d $src.$file) { # Or a directory.
 			unless(-d ($dest.$file)) {mkdir ($dest.$file);}
 		}
 	}
@@ -395,7 +397,7 @@ for(;$args<$argv_len;$args++)
 			$package = $ARGV[$args+1];
 			$args++;
 		} else { die_error("Package not specified.",2); }
-	} elsif($ARGV[$args] eq "-Ri") {
+	} elsif($ARGV[$args] eq "-Ri" || $ARGV[$args] eq "-ri") {
 		if($args<($argv_len-1)) {
 			$command = "reinstall";
 			$package = $ARGV[$args+1];
@@ -423,7 +425,7 @@ for(;$args<$argv_len;$args++)
 			$package = $ARGV[$args+1];
 			$args++;
 		} else { die_error("Package not specified.",2); }
-        } elsif($ARGV[$args] eq "-dRi") {
+        } elsif($ARGV[$args] eq "-dRi" || $ARGV[$args] eq "-dri") {
                 if($args<($argv_len-1)) {
                         $command = "dri";
                         $package = $ARGV[$args+1];
@@ -481,6 +483,7 @@ if($command eq "download" || $command eq "di" || $command eq "dri")
         print " complete\n";
 }
 sub process_cmd {
+	my $isdep = shift;
 	if($command eq "download" || $command eq "di" || $command eq "dri")
 	{
 		print "Searching for package '".$package."'...\n";
@@ -505,26 +508,29 @@ sub process_cmd {
 					foreach $dep (@deps) {
 						my $oldcmd = $command;
 						$package = $dep;
-						process_cmd();
+						process_cmd(1);
 						$command = $oldcmd;
 					}
 					$package = $oldpkg;
 				}
-				if($command ne "dri" && is_installed($package)){ die_error("The package is already installed! Uninstall it first.",11); }
+				if($isdep == 0 && $command ne "dri" && is_installed($package)){ die_error("The package is already installed! Uninstall it first.",11); }
 			}
 			print "Downloading...\n";
-			if($command eq "di") {
-				$dlprefix = tempdir("/tmp/pkgdl-XXXXXX", CLEANUP => ($verbose>1?0:1)) . "/";
+			if(!is_installed($package) || $command eq "dri")
+			{
+				if($command eq "di") {
+					$dlprefix = tempdir("/tmp/pkgdl-XXXXXX", CLEANUP => ($verbose>1?0:1)) . "/";
+				}
+				if($dlprefix ne "") {
+					chdir $dlprefix;
+				}
+				download_file($config->{repo} . "/" . $repo->{packages}->{$package}->{filename}, $repo->{packages}->{$package}->{filename});
+				print "Downloaded!\n";
 			}
-			if($dlprefix ne "") {
-				chdir $dlprefix;
-			}
-			download_file($config->{repo} . "/" . $repo->{packages}->{$package}->{filename}, $repo->{packages}->{$package}->{filename});
-			print "Downloaded!\n";
 		}
 		else { die_error("Package not found!",14); }
 	}
-	if($command eq "di") {
+	if($command eq "di" && !is_installed($package)) {
 		print "Installing...\n";
 		$package = $dlprefix . $repo->{packages}->{$package}->{filename};
 		$command = "install";
@@ -546,5 +552,5 @@ sub process_cmd {
 	elsif($command eq "list") { cmd_list(); }
 	elsif($command ne "download") { die_error("No command specified.\nUse -h for help."); }
 }
-process_cmd();
+process_cmd(0);
 exit(0);
