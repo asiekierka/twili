@@ -31,5 +31,8 @@ TODO:
 - Add xz to packages [when we have new chroot with builtin xz]
 - Work on bash or another sh replacement [zsh being integrated ASAP]
 
+- Update GCC to 4.7.1
+  - needs pppkg rewrite -> global source tree (GCC source is 70MB!)
+
 BROKEN PACKAGES:
 - lighttpd (UIO_MAXIOV)
