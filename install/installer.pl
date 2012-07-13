@@ -41,7 +41,7 @@ draw_popup("Updating pppkg...");
 # system("tar xf pppkg.ppk");
 # system("cp root/bin/pppkg files/pppkg");
 # system("rm -rf root build.sh info.json pppkg.ppk");
-# system("cp files/pppkg.json ".$prefix."etc/");
+system("cp files/pppkg.json ".$prefix."etc/");
 draw_popup("Downloading repo...");
 system("files/pppkg -P " . $prefix . " -u 2>&1") == 0
 	or exit(2);
