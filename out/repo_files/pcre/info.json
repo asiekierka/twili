@@ -1,7 +1,8 @@
 {"version": 1,
-"meta": {"name": "pcre", "version": "8.30",
+"meta": {"name": "pcre", "version": "8.30-1",
 "description": "Perl Compatible Regular Expressions",
 "dependencies": "libc",
 "provides": "",
+"recompile-on": "zlib g++",
 "url": "http://www.pcre.org/"},
 "package": {"script": "build.sh"}}

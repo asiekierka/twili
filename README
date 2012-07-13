@@ -33,3 +33,6 @@ TODO:
 - Fix pppkg bugs:
   - Tends to error when a package is tried to be installed again in a 
 large loop
+
+BROKEN PACKAGES:
+- lighttpd (UIO_MAXIOV)

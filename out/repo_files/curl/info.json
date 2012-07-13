@@ -3,5 +3,6 @@
 "description": "cURL library",
 "dependencies": "libc zlib",
 "provides": "",
+"recompile-on": "openssl libssh2 libidn librtmp",
 "url": "http://www.gmplib.org/"},
 "package": {"script": "build.sh"}}

@@ -4,7 +4,19 @@ test -e pcre-$VER.tar.bz2 || wget ftp://ftp.csx.cam.ac.uk/pub/software/programmi
 rm -rf pcre-$VER;tar -xf pcre-$VER.tar.bz2
 cd pcre-$VER
 
-./configure --prefix=/ --enable-utf
+CONFFLAGS="--disable-cpp"
+echo Checking for packages...
+pppkg -l > list.tmp
+if grep "g++" list.tmp
+then
+        CONFFLAGS=""
+fi
+if grep "zlib" list.tmp
+then
+        CONFFLAGS="$CONFFLAGS --enable-pcregrep-libz"
+fi
+
+./configure --prefix=/ --enable-utf8 $CONFFLAGS
 make
 make DESTDIR=$1 install
 
