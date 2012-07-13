@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "config-minimal", "version": "0.2-4",
-"description": "Minimal config.",
-"dependencies": "libc busybox",
-"provides": "",
-"url": "http://twi.asiekierka.pl"},
-"package": {"script": ""}}

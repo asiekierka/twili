@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libssh", "version": "0.5.0-1",
-"description": "libssh",
-"dependencies": "libc",
-"provides": "",
-"url": "http://www.libssh.org/"},
-"package": {"script": "build.sh"}}

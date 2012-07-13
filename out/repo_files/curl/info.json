@@ -1,8 +1,0 @@
-{"version": 1,
-"meta": {"name": "curl", "version": "7.25.0-1",
-"description": "cURL library",
-"dependencies": "libc zlib",
-"provides": "",
-"recompile-on": "openssl libssh2 libidn librtmp",
-"url": "http://www.gmplib.org/"},
-"package": {"script": "build.sh"}}

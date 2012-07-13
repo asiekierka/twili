@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "randrproto", "version": "1.3.2",
-"description": "",
-"dependencies": "libc xorg-util-macros",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

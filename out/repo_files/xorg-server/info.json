@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "xorg-server", "version": "1.9.5",
-"description": "X.Org server.",
-"dependencies": "libc xorg-util-macros pixman fixesproto damageproto xcmiscproto libxkbfile libxfont libpciaccess fixesproto bigreqsproto randrproto renderproto fontsproto videoproto compositeproto recordproto scrnsaverproto resourceproto xineramaproto",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

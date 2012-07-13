@@ -1,5 +1,0 @@
-#!/bin/sh
-Xorg -retro :0 &
-export DISPLAY=:0
-sleep 3
-xterm

@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libxdmcp", "version": "1.1.0",
-"description": "",
-"dependencies": "libc pkg-config",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

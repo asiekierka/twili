@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "mplayer", "version": "snapshot",
-"description": "MPlayer and MEncoder",
-"dependencies": "libc alsa-lib yasm",
-"provides": "mencoder",
-"url": "http://mplayerhq.hu/"},
-"package": {"script": "build.sh"}}

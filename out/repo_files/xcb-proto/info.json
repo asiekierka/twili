@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "xcb-proto", "version": "1.6",
-"description": "",
-"dependencies": "libc python",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

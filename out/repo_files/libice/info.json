@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libice", "version": "1.0.7",
-"description": "",
-"dependencies": "libc pkg-config xproto xtrans",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

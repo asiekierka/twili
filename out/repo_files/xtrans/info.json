@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "xtrans", "version": "1.2.6",
-"description": "",
-"dependencies": "libc",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

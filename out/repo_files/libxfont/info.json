@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libxfont", "version": "1.4.3",
-"description": "",
-"dependencies": "libc freetype libfontenc xproto fontsproto xtrans",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

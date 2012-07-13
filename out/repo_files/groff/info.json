@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "groff", "version": "1.21",
-"description": "GNU roff.",
-"dependencies": "libc",
-"provides": "",
-"url": "http://www.gnu.org/software/groff/"},
-"package": {"script": "build.sh"}}

@@ -1,5 +1,0 @@
-#!/bin/sh
-Xfbdev -retro  :0 -keybd evdev,,device=/dev/input/event2 -mouse evdev,,device=/dev/input/event3 &
-export DISPLAY=:0
-sleep 3
-xterm

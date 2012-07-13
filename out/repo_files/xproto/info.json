@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "xproto", "version": "7.0.21",
-"description": "",
-"dependencies": "libc xorg-util-macros",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

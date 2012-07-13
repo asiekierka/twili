@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "zlib", "version": "1.2.7",
-"description": "zlib compression library",
-"dependencies": "libc",
-"provides": "",
-"url": "http://zlib.net/"},
-"package": {"script": "build.sh"}}

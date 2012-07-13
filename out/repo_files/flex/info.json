@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "flex", "version": "2.5.35",
-"description": "flex",
-"dependencies": "libc",
-"provides": "",
-"url": "http://flex.sourceforge.net/"},
-"package": {"script": "build.sh"}}

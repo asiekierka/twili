@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "sudo", "version": "1.8.4p4",
-"description": "do things as root",
-"dependencies": "libc",
-"provides": "",
-"url": "http://www.sudo.ws/"},
-"package": {"script": "build.sh"}}

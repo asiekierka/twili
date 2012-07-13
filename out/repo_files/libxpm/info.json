@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libxpm", "version": "3.5.9",
-"description": "",
-"dependencies": "libc libx11",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libsm", "version": "1.2.0",
-"description": "",
-"dependencies": "libc libice",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

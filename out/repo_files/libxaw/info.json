@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libxaw", "version": "1.0.9",
-"description": "",
-"dependencies": "libc libxext libxmu libxpm",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

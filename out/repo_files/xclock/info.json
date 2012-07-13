@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "xclock", "version": "1.0.5",
-"description": "",
-"dependencies": "libc bzip2 fontconfig zlib expat libx11 libxrender libxft libxdmcp libxau libxmu freetype",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

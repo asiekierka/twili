@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "lighttpd", "version": "1.4.30-1",
-"description": "lighttpd web server",
-"dependencies": "libc zlib libbz2 pcre",
-"provides": "",
-"url": "http://www.lighttpd.org/"},
-"package": {"script": "build.sh"}}

@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "openssh", "version": "5.8p2",
-"description": "openssh",
-"dependencies": "libc openssl",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh", "postinstall": "keys.sh"}}

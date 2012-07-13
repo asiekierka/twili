@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "ffmpeg", "version": "0.10.2",
-"description": "ffmpeg",
-"dependencies": "libc yasm",
-"provides": "libavcodec libavformat libswscale libavdevice libavfilter libpostproc libswresample ffplay ffserver ffprobe",
-"url": "http://www.sourceware.org/libffi/"},
-"package": {"script": "build.sh"}}

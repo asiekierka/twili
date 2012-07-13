@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "gcc", "version": "4.7.1",
-"description": "GNU C Compiler.",
-"dependencies": "libc binutils gawk mpfr mpc gmp",
-"provides": "",
-"url": "http://www.gcc.gnu.org/"},
-"package": {"script": "build.sh"}}

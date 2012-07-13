@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "vim", "version": "7.3-591",
-"description": "vi improved, one of the two sacred text editors",
-"dependencies": "libc ncurses",
-"provides": "",
-"url": "http://www.vim.org/"},
-"package": {"script": "build.sh"}}

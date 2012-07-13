@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "gmp", "version": "5.0.5",
-"description": "GNU Multiple Precision Arithmetic Library",
-"dependencies": "libc",
-"provides": "",
-"url": "http://www.gmplib.org/"},
-"package": {"script": "build.sh"}}

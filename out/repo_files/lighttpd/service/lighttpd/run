@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec /bin/lighttpd -D -f /etc/lighttpd.conf 2>&1

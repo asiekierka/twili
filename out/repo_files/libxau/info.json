@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "libxau", "version": "1.0.6",
-"description": "",
-"dependencies": "libc pkg-config xproto",
-"provides": "",
-"url": ""},
-"package": {"script": "build.sh"}}

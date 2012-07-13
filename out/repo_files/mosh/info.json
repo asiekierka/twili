@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "mosh", "version": "1.1.3",
-"description": "mosh, the 20% cooler ssh",
-"dependencies": "libc boost protobuf ncurses zlib perl-io-pty",
-"provides": "",
-"url": "http://mosh.mit.edu/"},
-"package": {"script": "build.sh"}}

@@ -1,7 +1,0 @@
-{"version": 1,
-"meta": {"name": "wireless-tools", "version": "29",
-"description": "Wireless tools",
-"dependencies": "libc",
-"provides": "",
-"url": "http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"},
-"package": {"script": "build.sh"}}
