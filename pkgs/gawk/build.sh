@@ -1,7 +1,7 @@
 #!/bin/sh -e
-VER=4.0.0
-test -e gawk-$VER.tar.bz2 || wget http://ftp.gnu.org/gnu/gawk/gawk-$VER.tar.bz2
-rm -rf gawk-$VER;tar -xf gawk-$VER.tar.bz2
+VER=4.0.1
+test -e gawk-$VER.tar.gz || wget http://ftp.gnu.org/gnu/gawk/gawk-$VER.tar.gz
+rm -rf gawk-$VER;tar -xf gawk-$VER.tar.gz
 cd gawk-$VER
 
 

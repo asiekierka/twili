@@ -1,5 +1,5 @@
 #!/bin/sh -e
-VER=4.6.3
+VER=4.7.1
 TOP=$(pwd)
 test -e gcc-core-$VER.tar.bz2 || wget http://ftp.gnu.org/gnu/gcc/gcc-$VER/gcc-core-$VER.tar.bz2
 rm -rf gcc-$VER;tar -xf gcc-core-$VER.tar.bz2

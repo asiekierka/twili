@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "gawk", "version": "4.0.0",
+"meta": {"name": "gawk", "version": "4.0.1",
 "description": "GNU awk.",
 "dependencies": "libc",
 "provides": "",

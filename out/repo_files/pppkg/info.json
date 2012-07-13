@@ -1,5 +1,5 @@
 {"version": 1,
-"meta": {"name": "pppkg", "version": "0.31",
+"meta": {"name": "pppkg", "version": "0.32",
 "description": "Portable Perl PacKaGist",
 "dependencies": "libc busybox perl perl-json perl-io-compress",
 "provides": "pppkg-rebuild",

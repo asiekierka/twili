@@ -1,5 +1,5 @@
 #!/bin/sh -e
-VER=5.0.4
+VER=5.0.5
 test -e gmp-$VER.tar.bz2 || wget http://ftpmirror.gnu.org/gmp/gmp-$VER.tar.bz2
 rm -rf gmp-$VER;tar -xf gmp-$VER.tar.bz2
 cd gmp-$VER

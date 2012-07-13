@@ -1,5 +1,5 @@
 #!/bin/sh -e
-VER=3.1.0
+VER=3.1.1
 test -e mpfr-$VER.tar.bz2 || wget http://ftp.gnu.org/gnu/mpfr/mpfr-$VER.tar.bz2
 rm -rf mpfr-$VER;tar -xf mpfr-$VER.tar.bz2
 cd mpfr-$VER
