@@ -108,7 +108,7 @@ $repo->{providers} = {};
 print "pppkg repository generator 0.2 html edition\ncleaning...";
 
 my $html = "";
-my $html_temp = readText("TEMPLATE.html");
+my $html_temp = readText("repo/TEMPLATE.html");
 if(-d $copy_file_folder) { system("rm -rf ".$copy_file_folder); }
 mkdir($copy_file_folder);
 
@@ -116,7 +116,7 @@ my $html_list = "<div id=\"_filelist\">";
 
 $tempdir = tempdir("/tmp/pkgist-repo-gen-XXXXXX", CLEANUP => 1);	
 print "parsing packages...\n";
-my @pkgfiles = `find *.ppk`;
+my @pkgfiles = `find . -regex *.ppk`;
 foreach $file (@pkgfiles) {
 	$file=~s/\n//g;
 	print $file . "...\n";
